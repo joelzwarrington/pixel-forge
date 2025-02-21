@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_21_043839) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_21_053447) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_characters_on_name", unique: true
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.integer "ilvl"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_items_on_name"
   end
 end
