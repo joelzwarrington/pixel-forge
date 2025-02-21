@@ -17,7 +17,7 @@ module PixelForge
     config.autoload_lib(ignore: %w[assets tasks])
 
     config.generators do |generate|
-      generate.system_tests false
+      generate.system_tests nil
       generate.helper false
     end
   end
