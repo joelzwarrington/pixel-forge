@@ -5,6 +5,14 @@
   </div>
 
   <div>
+    <strong class="block font-medium mb-1">Equipment:</strong>
+    <ul class="my-2">
+      <% character.equipment.all.each do |slot, item| %>
+        <li><%= slot %>, <%= item&.name || "none" %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
     <strong class="block font-medium mb-1">Inventory:</strong>
     <ul class="my-2">
       <% character.inventory.items.each do |item, quantity| %>
