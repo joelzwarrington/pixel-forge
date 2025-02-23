@@ -43,4 +43,8 @@ class Inventory
       end
     end
   end
+
+  def to_partial_path
+    "inventory/inventory"
+  end
 end
