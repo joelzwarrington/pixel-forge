@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_21_053447) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_21_055940) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_characters_on_name", unique: true
+  end
+
+  create_table "inventory_items", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "item_id", null: false
+    t.integer "quantity"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_inventory_items_on_character_id"
+    t.index ["item_id"], name: "index_inventory_items_on_item_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -26,4 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_21_053447) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_items_on_name"
   end
+
+  add_foreign_key "inventory_items", "characters"
+  add_foreign_key "inventory_items", "items"
 end

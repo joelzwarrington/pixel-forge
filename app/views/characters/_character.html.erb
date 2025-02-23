@@ -3,4 +3,13 @@
     <strong class="block font-medium mb-1">Name:</strong>
     <%= character.name %>
   </div>
+
+  <div>
+    <strong class="block font-medium mb-1">Inventory:</strong>
+    <ul class="my-2">
+      <% character.inventory.items.each do |item, quantity| %>
+        <li><%= item.name %>, <%= quantity %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>

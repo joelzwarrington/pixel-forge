@@ -2,3 +2,8 @@ copper_ore:
   name: Copper Ore
   ilvl: 10
   weight: 10
+
+iron_ore:
+  name: Iron Ore
+  ilvl: 20
+  weight: 10
