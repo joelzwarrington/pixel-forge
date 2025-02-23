@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :locations
   resources :equipment_items
   resources :inventory_items
   resources :items
