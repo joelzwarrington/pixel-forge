@@ -1,0 +1,7 @@
+<%= form_with(url: character_equipment_path(character)) do |form| %>
+  <%= form.hidden_field :slot, value: slot %>
+
+  <%= form.label :item_id %>
+  <%= form.collection_select :item_id, character.inventory.items.map(&:first), :id, :name, prompt: true %>
+  <%= form.submit %>
+<% end %>

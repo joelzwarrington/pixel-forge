@@ -41,4 +41,8 @@ class Equipment
     opts = { slot:, item: }.compact
     character.equipment_items.exists?(opts)
   end
+
+  def to_partial_path
+    "equipment/equipment"
+  end
 end
