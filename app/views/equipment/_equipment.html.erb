@@ -1,12 +1,12 @@
-<div>
+<%= turbo_frame_tag :equipment do %>
   <strong class="block font-medium mb-1">Equipment:</strong>
   <ul class="my-2">
     <% equipment.all.each do |slot, item| %>
       <% if item %>
         <li><%= slot %>: <%= item.name %> <%= button_to "unequip", character_equipment_path(equipment.character), params: { slot: slot }, method: :delete, form_class: "inline-block", class: "cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline" %></li>
       <% else %>
-        <li><%= slot %>: <%= link_to "equip item", new_character_equipment_path(equipment.character, slot: slot), class: "cursor-pointer italic text-neutral-600 dark:text-neutral-500 hover:underline" %></li>
+        <li><%= slot %>: <%= link_to "equip item", new_character_equipment_path(equipment.character, slot: slot), data: { turbo: false }, class: "cursor-pointer italic text-neutral-600 dark:text-neutral-500 hover:underline" %></li>
       <% end %>
     <% end %>
   </ul>
-</div>
+<% end %>
