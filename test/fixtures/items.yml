@@ -1,3 +1,8 @@
+wooden_sword:
+  name: Wooden Sword
+  ilvl: 0
+  weight: 100
+
 copper_ore:
   name: Copper Ore
   ilvl: 10
