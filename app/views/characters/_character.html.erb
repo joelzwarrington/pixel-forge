@@ -9,7 +9,11 @@
     <ul class="my-2">
       <% Location.all.each do |location| %>
         <li>
-          <%= location.name %> <% if location == character.location %><strong>(you are here)</strong><% end %>
+          <% if location == character.location %>
+            <%= location.name %> <strong>(you are here)</strong>
+          <% else %>
+            <%= button_to location.name, character, params: { character: { location_id: location.id } }, class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+          <% end %>
         </li>
       <% end %>
     </ul>

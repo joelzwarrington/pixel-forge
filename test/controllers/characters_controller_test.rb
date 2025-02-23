@@ -34,7 +34,7 @@ class CharactersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update character" do
-    patch character_url(@character), params: { character: { name: @character.name } }
+    patch character_url(@character), params: { character: { name: @character.name, location_id: @character.location_id } }
     assert_redirected_to character_url(@character)
   end
 
