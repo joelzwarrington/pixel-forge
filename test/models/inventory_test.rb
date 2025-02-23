@@ -53,6 +53,19 @@ class InventoryTest < ActiveSupport::TestCase
     assert_equal 0, inventory.items.count
   end
 
+  test "#remove fails when item not in inventory" do
+    inventory = Inventory.new(characters(:joel))
+    items = inventory.items
+    assert_equal 1, items.count
+    assert_equal 50, items.first.second
+
+    assert_raises RuntimeError, "item not in inventory" do
+      inventory.remove([
+        [ items(:wooden_sword).id, 1 ]
+      ])
+    end
+  end
+
   test "#remove decrements quantity of existing item in inventory" do
     inventory = Inventory.new(characters(:joel))
     items = inventory.items
@@ -76,7 +89,7 @@ class InventoryTest < ActiveSupport::TestCase
     assert_equal 1, items.count
     assert_equal 50, items.first.second
 
-    assert_raises(RuntimeError, "not enough items to remove") do
+    assert_raises RuntimeError, "not enough items to remove" do
       inventory.remove([
         [ items(:copper_ore).id, 51 ]
       ])

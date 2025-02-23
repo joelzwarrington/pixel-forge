@@ -32,7 +32,7 @@ class Inventory
     items_to_remove.each do |item_id, quantity|
       inventory_item = inventory_items.find { |inventory_item| inventory_item.item_id == item_id }
 
-      next if inventory_item.nil?
+      raise "item not in inventory" if inventory_item.nil?
 
       if (new_quantity = inventory_item.quantity - quantity).positive?
         inventory_item.update(quantity: new_quantity)

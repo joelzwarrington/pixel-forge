@@ -67,6 +67,15 @@ class EquipmentTest < ActiveSupport::TestCase
     assert_equal 1, items.second.second
   end
 
+  test "#equip doesn't equip item not present in inventory" do
+    character = characters(:joel)
+    equipment = Equipment.new(character)
+
+    assert_raises RuntimeError, "item not in inventory" do
+      equipment.equip("off_hand", items(:iron_ore))
+    end
+  end
+
   test "#unequip unequips item in slot" do
     character = characters(:joel)
     equipment = Equipment.new(character)
