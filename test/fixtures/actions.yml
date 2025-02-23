@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+joel_tree:
+  location_node: wilderness_tree
+  character: joel
+  started_at: <%= 1.minute.ago %>
+  stopped_at:
+  next_tick_at: <%= 1.second.from_now %>
+  last_tick_at: <%= Time.current %>

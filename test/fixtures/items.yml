@@ -12,3 +12,13 @@ iron_ore:
   name: Iron Ore
   ilvl: 20
   weight: 10
+
+stick:
+  name: Stick
+  ilvl: 0
+  weight: 10
+
+log:
+  name: Log
+  ilvl: 0
+  weight: 10

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_23_071236) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_23_072255) do
   create_table "actions", force: :cascade do |t|
     t.integer "location_node_id", null: false
     t.integer "character_id", null: false
@@ -80,6 +80,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_071236) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "node_loot_pool_items", force: :cascade do |t|
+    t.integer "node_loot_pool_id", null: false
+    t.integer "item_id", null: false
+    t.integer "min_quantity"
+    t.integer "max_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_node_loot_pool_items_on_item_id"
+    t.index ["node_loot_pool_id", "item_id"], name: "index_node_loot_pool_items_on_node_loot_pool_id_and_item_id", unique: true
+    t.index ["node_loot_pool_id"], name: "index_node_loot_pool_items_on_node_loot_pool_id"
+  end
+
+  create_table "node_loot_pools", force: :cascade do |t|
+    t.integer "node_id", null: false
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["node_id"], name: "index_node_loot_pools_on_node_id"
+  end
+
   create_table "nodes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -95,4 +115,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_071236) do
   add_foreign_key "inventory_items", "items"
   add_foreign_key "location_nodes", "locations"
   add_foreign_key "location_nodes", "nodes"
+  add_foreign_key "node_loot_pool_items", "items"
+  add_foreign_key "node_loot_pool_items", "node_loot_pools"
+  add_foreign_key "node_loot_pools", "nodes"
 end

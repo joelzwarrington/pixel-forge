@@ -1,7 +1,7 @@
 require "test_helper"
 
 class ActionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "each fixture is valid" do
+    assert actions.all?(&:valid?)
+  end
 end
