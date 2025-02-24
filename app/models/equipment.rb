@@ -10,8 +10,8 @@ class Equipment
 
     EquipmentItem.transaction do
       InventoryItem.transaction do
-        character.inventory.remove([ [ item.id, 1 ] ])
-        character.equipment_items.create!(item: item, slot: slot)
+        character.inventory.remove([ [ item, 1 ] ])
+        character.equipment_items.create!(item_id: item.id, slot: slot)
       end
     end
   end
@@ -38,7 +38,7 @@ class Equipment
   end
 
   def equipped?(slot: nil, item: nil)
-    opts = { slot:, item: }.compact
+    opts = { slot:, item_id: item&.id }.compact
     character.equipment_items.exists?(opts)
   end
 

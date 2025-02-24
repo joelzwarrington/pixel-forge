@@ -11,7 +11,7 @@ class EquipmentControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should equip item" do
-    post character_equipment_url(@character), params: { slot: "off_hand", item_id: items(:copper_ore).id }
+    post character_equipment_url(@character), params: { slot: "off_hand", item_id: "copper_ore" }
     assert_redirected_to character_equipment_url(@character)
   end
 

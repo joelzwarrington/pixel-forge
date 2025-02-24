@@ -1,0 +1,12 @@
+- id: wooden_sword
+  name: Wooden Sword
+- id: copper_sword
+  name: Copper Sword
+- id: copper_ore
+  name: Copper Ore
+- id: iron_ore
+  name: Iron Ore
+- id: stick
+  name: Stick
+- id: logs
+  name: Logs

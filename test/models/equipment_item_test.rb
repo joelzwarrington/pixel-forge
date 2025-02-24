@@ -6,7 +6,7 @@ class EquipmentItemTest < ActiveSupport::TestCase
   end
 
   test "can't equip multiple items to the same slot" do
-    equipment_item = EquipmentItem.new(character: characters(:joel), item: items(:wooden_sword), slot: "main_hand")
+    equipment_item = EquipmentItem.new(character: characters(:joel), item_id: "wooden_sword", slot: "main_hand")
 
     assert_not equipment_item.valid?
     assert equipment_item.errors.added?(:slot, :taken, value: equipment_item.slot)
@@ -16,7 +16,7 @@ class EquipmentItemTest < ActiveSupport::TestCase
   end
 
   test "can't equip to invalid slot" do
-    equipment_item = EquipmentItem.new(character: characters(:joel), item: items(:wooden_sword), slot: "non_existant")
+    equipment_item = EquipmentItem.new(character: characters(:joel), item_id: "wooden_sword", slot: "non_existant")
 
     assert_not equipment_item.valid?
     assert equipment_item.errors.added?(:slot, :inclusion, value: equipment_item.slot)
@@ -26,7 +26,7 @@ class EquipmentItemTest < ActiveSupport::TestCase
   end
 
   test "slot must be specified" do
-    equipment_item = EquipmentItem.new(character: characters(:joel), item: items(:wooden_sword))
+    equipment_item = EquipmentItem.new(character: characters(:joel), item_id: "wooden_sword")
 
     assert_not equipment_item.valid?
     assert equipment_item.errors.added?(:slot, :blank)

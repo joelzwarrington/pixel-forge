@@ -1,4 +1,4 @@
 joel_wooden_sword:
   character: joel
-  item: wooden_sword
+  item_id: wooden_sword
   slot: main_hand

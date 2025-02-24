@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_23_072255) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_24_205059) do
   create_table "actions", force: :cascade do |t|
     t.integer "location_node_id", null: false
     t.integer "character_id", null: false
@@ -36,33 +36,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_072255) do
 
   create_table "equipment_items", force: :cascade do |t|
     t.integer "character_id", null: false
-    t.integer "item_id", null: false
+    t.string "item_id"
     t.string "slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "slot"], name: "index_equipment_items_on_character_id_and_slot", unique: true
     t.index ["character_id"], name: "index_equipment_items_on_character_id"
+    t.index ["item_id", "character_id", "slot"], name: "index_equipment_items_on_item_id_and_character_id_and_slot", unique: true
     t.index ["item_id"], name: "index_equipment_items_on_item_id"
   end
 
   create_table "inventory_items", force: :cascade do |t|
     t.integer "character_id", null: false
-    t.integer "item_id", null: false
+    t.string "item_id"
     t.integer "quantity"
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_inventory_items_on_character_id"
+    t.index ["item_id", "character_id"], name: "index_inventory_items_on_item_id_and_character_id", unique: true
     t.index ["item_id"], name: "index_inventory_items_on_item_id"
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.integer "ilvl"
-    t.integer "weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_items_on_name"
   end
 
   create_table "location_nodes", force: :cascade do |t|
@@ -82,7 +75,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_072255) do
 
   create_table "node_loot_pool_items", force: :cascade do |t|
     t.integer "node_loot_pool_id", null: false
-    t.integer "item_id", null: false
+    t.string "item_id"
     t.integer "min_quantity"
     t.integer "max_quantity"
     t.datetime "created_at", null: false
@@ -110,12 +103,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_072255) do
   add_foreign_key "actions", "location_nodes"
   add_foreign_key "characters", "locations"
   add_foreign_key "equipment_items", "characters"
-  add_foreign_key "equipment_items", "items"
   add_foreign_key "inventory_items", "characters"
-  add_foreign_key "inventory_items", "items"
   add_foreign_key "location_nodes", "locations"
   add_foreign_key "location_nodes", "nodes"
-  add_foreign_key "node_loot_pool_items", "items"
   add_foreign_key "node_loot_pool_items", "node_loot_pools"
   add_foreign_key "node_loot_pools", "nodes"
 end

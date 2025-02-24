@@ -17,7 +17,7 @@ class EquipmentTest < ActiveSupport::TestCase
       "back" => nil,
       "finger_one" => nil,
       "finger_two" => nil,
-      "main_hand" => items(:wooden_sword),
+      "main_hand" => Item.find("wooden_sword"),
       "off_hand" => nil
     }
 
@@ -29,12 +29,12 @@ class EquipmentTest < ActiveSupport::TestCase
 
     assert equipment.equipped?
     assert equipment.equipped?(slot: "main_hand")
-    assert equipment.equipped?(item: items(:wooden_sword))
-    assert equipment.equipped?(slot: "main_hand", item: items(:wooden_sword))
-    assert_not equipment.equipped?(slot: "head", item: items(:wooden_sword))
+    assert equipment.equipped?(item: Item.find("wooden_sword"))
+    assert equipment.equipped?(slot: "main_hand", item: Item.find("wooden_sword"))
+    assert_not equipment.equipped?(slot: "head", item: Item.find("wooden_sword"))
 
-    assert_not equipment.equipped?(item: items(:copper_ore))
-    assert_not equipment.equipped?(slot: "main_hand", item: items(:copper_ore))
+    assert_not equipment.equipped?(item: Item.find("copper_ore"))
+    assert_not equipment.equipped?(slot: "main_hand", item: Item.find("copper_ore"))
   end
 
   test "#equip equips item if it exists in inventory" do
@@ -42,11 +42,11 @@ class EquipmentTest < ActiveSupport::TestCase
     equipment = Equipment.new(character)
 
     assert_difference -> { EquipmentItem.count } do
-      equipment.equip("off_hand", items(:copper_ore))
+      equipment.equip("off_hand", Item.find("copper_ore"))
     end
 
-    assert equipment.equipped?(slot: "main_hand", item: items(:wooden_sword))
-    assert equipment.equipped?(slot: "off_hand", item: items(:copper_ore))
+    assert equipment.equipped?(slot: "main_hand", item: Item.find("wooden_sword"))
+    assert equipment.equipped?(slot: "off_hand", item: Item.find("copper_ore"))
     items = character.inventory.items
     assert_equal 1, items.count
     assert_equal 49, items.first.second
@@ -57,10 +57,10 @@ class EquipmentTest < ActiveSupport::TestCase
     equipment = Equipment.new(character)
 
     assert_no_difference -> { EquipmentItem.count } do
-      equipment.equip("main_hand", items(:copper_ore))
+      equipment.equip("main_hand", Item.find("copper_ore"))
     end
 
-    assert equipment.equipped?(slot: "main_hand", item: items(:copper_ore))
+    assert equipment.equipped?(slot: "main_hand", item: Item.find("copper_ore"))
     items = character.inventory.items
     assert_equal 2, items.count
     assert_equal 49, items.first.second
@@ -72,7 +72,7 @@ class EquipmentTest < ActiveSupport::TestCase
     equipment = Equipment.new(character)
 
     assert_raises RuntimeError, "item not in inventory" do
-      equipment.equip("off_hand", items(:iron_ore))
+      equipment.equip("off_hand", Item.find("iron_ore"))
     end
   end
 

@@ -4,7 +4,7 @@ class InventoryTest < ActiveSupport::TestCase
   test "#items lists items in inventory with counts" do
     inventory = Inventory.new(characters(:joel))
     assert_equal 1, inventory.items.count
-    assert_equal items(:copper_ore), inventory.items.first.first
+    assert_equal Item.find("copper_ore"), inventory.items.first.first
     assert_equal 50, inventory.items.first.second
   end
 
@@ -14,7 +14,7 @@ class InventoryTest < ActiveSupport::TestCase
 
     assert_difference -> { InventoryItem.count } do
       inventory.add([
-        [ items(:iron_ore).id, 1 ]
+        [ Item.find("iron_ore"), 1 ]
       ])
     end
 
@@ -29,7 +29,7 @@ class InventoryTest < ActiveSupport::TestCase
 
     assert_no_difference -> { InventoryItem.count } do
       inventory.add([
-        [ items(:copper_ore).id, 1 ]
+        [ Item.find("copper_ore"), 1 ]
       ])
     end
 
@@ -46,7 +46,7 @@ class InventoryTest < ActiveSupport::TestCase
 
     assert_difference -> { InventoryItem.count }, -1 do
       inventory.remove([
-        [ items(:copper_ore).id, 50 ]
+        [ Item.find("copper_ore"), 50 ]
       ])
     end
 
@@ -61,7 +61,7 @@ class InventoryTest < ActiveSupport::TestCase
 
     assert_raises RuntimeError, "item not in inventory" do
       inventory.remove([
-        [ items(:wooden_sword).id, 1 ]
+        [ Item.find("wooden_sword"), 1 ]
       ])
     end
   end
@@ -74,7 +74,7 @@ class InventoryTest < ActiveSupport::TestCase
 
     assert_no_difference -> { InventoryItem.count } do
       inventory.remove([
-        [ items(:copper_ore).id, 25 ]
+        [ Item.find("copper_ore"), 25 ]
       ])
     end
 
@@ -91,7 +91,7 @@ class InventoryTest < ActiveSupport::TestCase
 
     assert_raises RuntimeError, "not enough items to remove" do
       inventory.remove([
-        [ items(:copper_ore).id, 51 ]
+        [ Item.find("copper_ore"), 51 ]
       ])
     end
   end

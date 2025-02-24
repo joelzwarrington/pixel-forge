@@ -98,6 +98,8 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    frozen_record (0.27.4)
+      activemodel
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -358,6 +360,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
+  frozen_record
   importmap-rails
   kamal
   propshaft

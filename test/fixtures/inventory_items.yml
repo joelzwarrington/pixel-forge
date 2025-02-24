@@ -1,5 +1,5 @@
 joel_copper_ore:
   character: joel
-  item: copper_ore
+  item_id: copper_ore
   quantity: 50
   weight: 500
