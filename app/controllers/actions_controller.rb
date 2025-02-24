@@ -1,30 +1,20 @@
 class ActionsController < ApplicationController
+  before_action :set_character, only: %i[ show new create destroy ]
   before_action :set_action, only: %i[ show edit update destroy ]
 
-  # GET /actions
-  def index
-    @actions = Action.all
-  end
-
-  # GET /actions/1
   def show
+    redirect_to @character if @action.nil?
   end
 
-  # GET /actions/new
   def new
     @action = Action.new
   end
 
-  # GET /actions/1/edit
-  def edit
-  end
-
-  # POST /actions
   def create
-    @action = Action.new(action_params)
+    node = Node.find(params.expect(:node_id))
 
-    if @action.save
-      redirect_to @action, notice: "Action was successfully created."
+    if (@action = ActionManager.begin(@character, node))
+      redirect_to [ @character, :action ], notice: "Action was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -46,13 +36,16 @@ class ActionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_action
-      @action = Action.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def action_params
-      params.expect(action: [ :location_node_id, :character_id, :started_at, :stopped_at, :seed, :next_tick_at, :last_tick_at ])
-    end
+  def set_character
+    @character = Character.find(params.expect(:character_id))
+  end
+
+  def set_action
+    @action = @character.actions.active.first
+  end
+
+  def action_params
+    params.expect(action: [ :node_id ])
+  end
 end

@@ -6,13 +6,20 @@
 
   <div>
     <strong class="block font-medium mb-1">Locations:</strong>
-    <ul class="my-2">
+    <ul class="my-2 list-disc list-inside">
       <% Location.all.each do |location| %>
         <li>
           <% if location == character.location %>
             <%= location.name %> <strong>(you are here)</strong>
+            <ul class="pl-4 list-disc list-inside">
+              <% location.nodes.each do |node| %>
+                <li>
+                  <%= button_to node.name, character_action_path(character), params: { node_id: node.id }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+                </li>
+              <% end %>
+            </ul>
           <% else %>
-            <%= button_to location.name, character, params: { character: { location_id: location.id } }, class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+            <%= button_to location.name, character, params: { character: { location_id: location.id } }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
           <% end %>
         </li>
       <% end %>

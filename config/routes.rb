@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :characters, shallow: true do
     resource :equipment
+    resource :action
   end
 end
