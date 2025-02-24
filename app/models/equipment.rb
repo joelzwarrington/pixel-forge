@@ -21,7 +21,7 @@ class Equipment
       InventoryItem.transaction do
         equipment_items = character.equipment_items.destroy_by(slot: slot)
         items_to_add = equipment_items.map do |equipment_item|
-          [ equipment_item.item_id, 1 ]
+          [ equipment_item.item, 1 ]
         end
         character.inventory.add(items_to_add)
       end

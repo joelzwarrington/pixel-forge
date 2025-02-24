@@ -12,11 +12,11 @@ class Inventory
   end
 
   def add(items_to_add)
-    inventory_items = character.inventory_items.where(item_id: items_to_add.map(&:first))
+    inventory_items = character.inventory_items.where(item: items_to_add.map(&:first))
     items_to_add.each do |item_id, quantity|
       inventory_item = inventory_items.find { |inventory_item| inventory_item.item_id == item_id }
       if inventory_item.nil?
-        character.inventory_items.build(item_id: item_id, quantity: quantity)
+        character.inventory_items.build(item: item_id, quantity: quantity)
       else
         inventory_item.quantity += quantity
         inventory_item.save
