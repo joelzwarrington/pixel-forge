@@ -1,0 +1,6 @@
+- id: tree
+  name: Tree
+  drops:
+    - item_id: logs
+      minimum_quantity: 1
+      maximum_quantity: 1

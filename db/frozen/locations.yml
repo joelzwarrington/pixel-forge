@@ -1,4 +1,7 @@
-- id: Town
+- id: town
   name: Town
-- id: Woods
+  nodes:
+- id: woods
   name: Woods
+  nodes:
+    - tree

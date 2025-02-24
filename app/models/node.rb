@@ -1,6 +1,19 @@
-class Node < ApplicationRecord
-  has_many :location_nodes, dependent: :destroy
-  has_many :locations, through: :location_nodes
+class Node < FrozenRecord::Base
+  class Drop
+    def self.load(data)
+      data.map do |drop|
+        new(drop)
+      end
+    end
 
-  validates :name, presence: true
+    attr_reader :item, :minimum_quantity, :maximum_quantity
+
+    def initialize(data)
+      @item = Item.find(data["item_id"])
+      @minimum_quantity = data["minimum_quantity"]
+      @maximum_quantity = data["maximum_quantity"]
+    end
+  end
+
+  attribute :drops, Drop
 end
