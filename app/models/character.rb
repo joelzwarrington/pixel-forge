@@ -2,7 +2,6 @@ class Character < ApplicationRecord
   has_many :inventory_items, dependent: :destroy
   has_many :equipment_items, dependent: :destroy
   has_many :actions, dependent: :destroy
-  belongs_to :location, optional: true
 
   validates :name, presence: true, uniqueness: true, length: { in: 4..20 }, format: { with: /\A[a-zA-Z\d]+\z/, message: "only allows letters and numbers" }
 
@@ -14,5 +13,9 @@ class Character < ApplicationRecord
 
   def equipment
     Equipment.new(self)
+  end
+
+  def location
+    Location.find(location_id) if location_id.present?
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_24_205059) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_24_212305) do
   create_table "actions", force: :cascade do |t|
     t.integer "location_node_id", null: false
     t.integer "character_id", null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_205059) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "location_id"
+    t.string "location_id"
     t.index ["location_id"], name: "index_characters_on_location_id"
     t.index ["name"], name: "index_characters_on_name", unique: true
   end
@@ -59,18 +59,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_205059) do
   end
 
   create_table "location_nodes", force: :cascade do |t|
-    t.integer "location_id", null: false
+    t.string "location_id"
     t.integer "node_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_location_nodes_on_location_id"
     t.index ["node_id"], name: "index_location_nodes_on_node_id"
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "node_loot_pool_items", force: :cascade do |t|
@@ -101,10 +95,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_205059) do
 
   add_foreign_key "actions", "characters"
   add_foreign_key "actions", "location_nodes"
-  add_foreign_key "characters", "locations"
   add_foreign_key "equipment_items", "characters"
   add_foreign_key "inventory_items", "characters"
-  add_foreign_key "location_nodes", "locations"
   add_foreign_key "location_nodes", "nodes"
   add_foreign_key "node_loot_pool_items", "node_loot_pools"
   add_foreign_key "node_loot_pools", "nodes"
