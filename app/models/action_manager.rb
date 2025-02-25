@@ -47,10 +47,9 @@ class ActionManager < ApplicationRecord
       new_last_tick_at = last_tick_at.advance(seconds: seconds_per_tick * ticks)
       action.update!(
         last_tick_at: new_last_tick_at,
-        next_tick_at: new_last_tick_at.advance(seconds: seconds_per_tick)
+        next_tick_at: new_last_tick_at.advance(seconds: seconds_per_tick),
+        drops: drops.merge(action.drops || {}) { |key, new_value, old_value| new_value + old_value }
       )
-
-      drops
     end
 
     def random(seed)
