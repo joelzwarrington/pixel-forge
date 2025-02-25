@@ -1,31 +1,15 @@
-<div id="<%= dom_id action %>" class="my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Location node:</strong>
-    <%= action.location_id %>
-    <%= action.node_id %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Character:</strong>
-    <%= action.character_id %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Started at:</strong>
-    <%= action.started_at %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Stopped at:</strong>
-    <%= action.stopped_at %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Seed:</strong>
-    <%= action.seed %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Next tick at:</strong>
-    <%= action.next_tick_at %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Last tick at:</strong>
-    <%= action.last_tick_at %>
-  </div>
-</div>
+<%= turbo_stream_from action %>
+
+<%= turbo_frame_tag action do %>
+  <ul class="my-2 list-disc list-inside">
+    <li><strong>Location:</strong> <%= action.location.name %></li>
+    <li><strong>Node:</strong> <%= action.node.name %></li>
+    <li><strong>Drops:</strong>
+      <ul class="pl-4 list-disc list-inside">
+        <% action.drops.each do |item, quantity| %>
+          <li><%= item.name %>: <%= quantity %></li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+<% end %>

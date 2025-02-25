@@ -29,7 +29,7 @@ class ActionManager < ApplicationRecord
 
     def tick(action)
       time = Time.current
-      last_tick_at = action.last_tick_at
+      last_tick_at = action.last_tick_at || action.started_at
       time_since_last_tick = time - last_tick_at
       seconds_per_tick = 1
       ticks = (time_since_last_tick / seconds_per_tick).floor
@@ -48,7 +48,7 @@ class ActionManager < ApplicationRecord
       action.update!(
         last_tick_at: new_last_tick_at,
         next_tick_at: new_last_tick_at.advance(seconds: seconds_per_tick),
-        drops: drops.merge(action.drops || {}) { |key, new_value, old_value| new_value + old_value }
+        drops: drops.merge(action.attributes["drops"] || {}) { |key, new_value, old_value| new_value + old_value }
       )
     end
 
