@@ -14,7 +14,7 @@
             <ul class="pl-4 list-disc list-inside">
               <% location.nodes.each do |node| %>
                 <li>
-                  <%= button_to node.name, character_action_path(character), params: { node_id: node.id }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+                  <%= button_to node.name, character_action_path(character), params: { node_id: node.id }, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
                 </li>
               <% end %>
             </ul>
