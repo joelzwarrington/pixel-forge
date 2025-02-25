@@ -23,12 +23,15 @@ class ActionManager < ApplicationRecord
       if (action = active_for(character)).present?
         time = Time.current
         # executes ticks until stopped_at
-        action.update!(stopped_at: time)
+        Action.transaction do
+          tick(action, time)
+          action.update!(stopped_at: time)
+          character.inventory.add(action.drops)
+        end
       end
     end
 
-    def tick(action)
-      time = Time.current
+    def tick(action, time = Time.current)
       last_tick_at = action.last_tick_at || action.started_at
       time_since_last_tick = time - last_tick_at
       seconds_per_tick = 1
