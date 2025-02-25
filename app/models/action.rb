@@ -2,6 +2,7 @@ class Action < ApplicationRecord
   broadcasts
   belongs_to :character
   scope :active, -> { where(stopped_at: nil) }
+  scope :to_be_ticked, ->(time = Time.current) { active.where(next_tick_at: ..time) }
 
   def location
     Location.find(location_id)
