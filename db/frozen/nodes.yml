@@ -4,3 +4,9 @@
     - item_id: logs
       minimum_quantity: 1
       maximum_quantity: 1
+- id: copper_rock
+  name: Copper Rock
+  drops:
+    - item_id: copper_ore
+      minimum_quantity: 1
+      maximum_quantity: 1

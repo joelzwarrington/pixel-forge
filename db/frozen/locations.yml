@@ -5,3 +5,7 @@
   name: Woods
   nodes:
     - tree
+- id: mines
+  name: Mines
+  nodes:
+    - copper_rock
