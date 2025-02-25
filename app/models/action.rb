@@ -2,7 +2,7 @@ class Action < ApplicationRecord
   broadcasts
   belongs_to :character
   scope :active, -> { where(stopped_at: nil) }
-  scope :to_be_ticked, ->(time = Time.current) { active.where(next_tick_at: ..time) }
+  scope :to_be_ticked, ->(time = Time.current) { joins(:character).active.where(next_tick_at: ..time, character: { online: true }) }
 
   def location
     Location.find(location_id)

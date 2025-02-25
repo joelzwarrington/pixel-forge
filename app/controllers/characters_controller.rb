@@ -53,6 +53,6 @@ class CharactersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def character_params
-      params.expect(character: [ :name, :location_id ])
+      params.expect(character: [ :name, :location_id, :online ])
     end
 end

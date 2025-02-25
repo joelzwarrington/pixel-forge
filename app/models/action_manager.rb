@@ -14,7 +14,7 @@ class ActionManager < ApplicationRecord
           node_id: node.id,
           started_at: time,
           seed: "#{time.iso8601}-#{SecureRandom.hex}",
-          next_tick_at: time + 5.seconds,
+          next_tick_at: time + 1.second,
         )
       end
     end

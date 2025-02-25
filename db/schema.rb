@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_25_062333) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_25_093807) do
   create_table "actions", force: :cascade do |t|
     t.integer "character_id", null: false
     t.datetime "started_at"
@@ -33,6 +33,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_25_062333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "location_id"
+    t.boolean "online", default: false
     t.index ["location_id"], name: "index_characters_on_location_id"
     t.index ["name"], name: "index_characters_on_name", unique: true
   end
