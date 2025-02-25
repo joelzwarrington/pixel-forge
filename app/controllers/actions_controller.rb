@@ -1,13 +1,9 @@
 class ActionsController < ApplicationController
-  before_action :set_character, only: %i[ show new create destroy ]
-  before_action :set_action, only: %i[ show edit update destroy ]
+  before_action :set_character, only: %i[ show create destroy ]
+  before_action :set_action, only: %i[ show destroy ]
 
   def show
     redirect_to @character if @action.nil?
-  end
-
-  def new
-    @action = Action.new
   end
 
   def create
@@ -20,19 +16,9 @@ class ActionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /actions/1
-  def update
-    if @action.update(action_params)
-      redirect_to @action, notice: "Action was successfully updated.", status: :see_other
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /actions/1
   def destroy
-    @action.destroy!
-    redirect_to actions_path, notice: "Action was successfully destroyed.", status: :see_other
+    ActionManager.end(@character)
+    redirect_to @character, notice: "Action was stopped.", status: :see_other
   end
 
   private
@@ -42,7 +28,7 @@ class ActionsController < ApplicationController
   end
 
   def set_action
-    @action = @character.actions.active.first
+    @action = ActionManager.active_for(@character)
   end
 
   def action_params

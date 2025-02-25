@@ -13,3 +13,5 @@
     </li>
   </ul>
 <% end %>
+
+<%= button_to "Stop action", character_action_path(action.character), method: :delete, class: "mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer" %>
