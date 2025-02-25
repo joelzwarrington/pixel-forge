@@ -6,6 +6,7 @@
 
   <div>
     <strong class="block font-medium mb-1">Locations:</strong>
+    <% action = ActionManager.active_for(character) %>
     <ul class="my-2 list-disc list-inside">
       <% Location.all.each do |location| %>
         <li>
@@ -14,7 +15,11 @@
             <ul class="pl-4 list-disc list-inside">
               <% location.nodes.each do |node| %>
                 <li>
-                  <%= button_to node.name, character_action_path(character), params: { node_id: node.id }, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+                  <% if action&.location == location && action&.node == node %>
+                    <%= node.name %> <%= link_to "view drops", character_action_path(character), data: { turbo: false }, class: "italic sor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+                  <% else %>
+                    <%= button_to node.name, character_action_path(character), params: { node_id: node.id }, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+                  <% end %>
                 </li>
               <% end %>
             </ul>
