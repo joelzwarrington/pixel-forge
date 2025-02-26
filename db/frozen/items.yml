@@ -10,3 +10,11 @@
   name: Stick
 - id: logs
   name: Logs
+
+# Copper
+- id: copper_sword
+  name: Copper Sword
+- id: copper_dagger
+  name: Copper Dagger
+- id: copper_longsword
+  name: Copper Longsword

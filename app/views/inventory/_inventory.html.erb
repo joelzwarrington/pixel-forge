@@ -6,7 +6,10 @@
     <div class="px-4 py-5 sm:p-6">
       <ul class="list-disc list-inside">
         <% inventory.items.each do |item, quantity| %>
-          <li><%= item.name %>, <%= quantity %></li>
+          <li>
+            <%= image_tag(item.image_path, width: 32, height: 32)%>
+            <%= item.name %>, <%= quantity %>
+          </li>
         <% end %>
       </ul>
     </div>
