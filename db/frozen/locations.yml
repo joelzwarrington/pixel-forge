@@ -1,11 +1,42 @@
-- id: town
-  name: Town
-  nodes:
-- id: woods
-  name: Woods
-  nodes:
-    - tree
-- id: mines
-  name: Mines
-  nodes:
-    - copper_rock
+# Orcs
+- id: gor_kash
+  name: Gor'Kash
+- id: krul_varr
+  name: Krul'Varr
+- id: var_gol_sh
+  name: Var'gol'sh
+- id: thrak_zor
+  name: Thrak'zor
+- id: bloodfang_crags
+  name: Bloodfang Crags
+- id: gloomfang_wastes
+  name: Gloomfang Wastes
+# Elves
+- id: evendell
+  name: Evendell
+- id: Vaelyndor
+  name: Vaelyndor
+- id: ithilwens_hollow
+  name: Ithilwen's Hollow
+- id: tir_anwen
+  name: Tir'Anwen
+- id: eldertwine_woods
+  name: Eldertwine Woods
+- id: starbloom_river
+  name: Starbloom River
+# Humans
+- id: ravenhold
+  name: Ravenhold
+- id: harrowford
+  name: Harrowford
+- id: brighthollow
+  name: Brighthollow
+- id: thornbrook
+  name: Thornbrook
+- id: wildermarch
+  name: Wildermarch
+- id: ironfang_ridge
+  name: Ironfang Ridge
+# Capital
+- id: vaelthorn
+  name: Vaelthorn
