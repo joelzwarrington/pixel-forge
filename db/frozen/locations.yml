@@ -9,6 +9,8 @@
   name: Thrak'zor
 - id: bloodfang_crags
   name: Bloodfang Crags
+  nodes:
+    - copper_rock
 - id: gloomfang_wastes
   name: Gloomfang Wastes
 # Elves

@@ -1,13 +1,20 @@
 <%= turbo_frame_tag action do %>
-  <ul class="my-2 list-disc list-inside">
-    <li><strong>Location:</strong> <%= action.location.name %></li>
-    <li><strong>Node:</strong> <%= action.node.name %></li>
-    <li><strong>Drops:</strong>
-      <ul class="pl-4 list-disc list-inside">
-        <% action.drops.each do |item, quantity| %>
-          <li><%= item.name %>: <%= quantity %></li>
-        <% end %>
+  <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+    <div class="px-4 py-5 sm:px-6">
+      <h2>Action</h2>
+    </div>
+    <div class="px-4 py-5 sm:p-6">
+      <ul class="list-disc list-inside">
+        <li><strong>Location:</strong> <%= action.location.name %></li>
+        <li><strong>Node:</strong> <%= action.node.name %></li>
+        <li><strong>Drops:</strong>
+          <ul class="pl-4 list-disc list-inside">
+            <% action.drops.each do |item, quantity| %>
+              <li><%= item.name %>: <%= quantity %></li>
+            <% end %>
+          </ul>
+        </li>
       </ul>
-    </li>
-  </ul>
+    </div>
+  </div>
 <% end %>

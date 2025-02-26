@@ -1,4 +1,4 @@
-# development:
-#   tick_actions:
-#     class: TickActionsJob
-#     schedule: every 1 seconds
+development:
+  tick_actions:
+    class: TickActionsJob
+    schedule: every 1 seconds
