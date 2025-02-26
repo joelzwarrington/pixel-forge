@@ -1,9 +1,15 @@
 <%= turbo_frame_tag :inventory do %>
-  <strong class="block font-medium mb-1">Inventory:</strong>
-  <ul class="my-2">
-    <% inventory.items.each do |item, quantity| %>
-      <li><%= item.name %>, <%= quantity %></li>
-    <% end %>
-  </ul>
+  <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+    <div class="px-4 py-5 sm:px-6">
+      <h2>Inventory</h2>
+    </div>
+    <div class="px-4 py-5 sm:p-6">
+      <ul class="list-disc list-inside">
+        <% inventory.items.each do |item, quantity| %>
+          <li><%= item.name %>, <%= quantity %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 <% end %>
 
