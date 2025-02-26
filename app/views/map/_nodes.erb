@@ -1,0 +1,20 @@
+<% location = character.location %>
+<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+  <div class="px-4 py-5 sm:px-6">
+    <h2><%= location.name %></h2>
+  </div>
+  <div class="px-4 py-5 sm:p-6">
+    <ul class="pl-4 list-disc list-inside">
+      <% action = ActionManager.active_for(character) %>
+      <% location.nodes.each do |node| %>
+        <li>
+          <% if action&.location == location && action&.node == node %>
+            <%= node.name %> <%= link_to "view drops", character_action_path(character), data: { turbo: false }, class: "italic sor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+          <% else %>
+            <%= button_to node.name, character_action_path(character), params: { node_id: node.id }, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

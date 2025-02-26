@@ -4,31 +4,9 @@
     <%= character.name %>... online: <%= character.online? %> (<%= button_to "switch", character, params: { character: { online: !character.online? } }, form_class: "inline-block", class: "cursor-pointer italic text-gray-600 dark:text-blue-500 hover:underline" %>)
   </div>
 
-  <div>
-    <strong class="block font-medium mb-1">Locations:</strong>
-    <% action = ActionManager.active_for(character) %>
-    <ul class="my-2 list-disc list-inside">
-      <% Location.all.each do |location| %>
-        <li>
-          <% if location == character.location %>
-            <%= location.name %> <strong>(you are here)</strong>
-            <ul class="pl-4 list-disc list-inside">
-              <% location.nodes.each do |node| %>
-                <li>
-                  <% if action&.location == location && action&.node == node %>
-                    <%= node.name %> <%= link_to "view drops", character_action_path(character), data: { turbo: false }, class: "italic sor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
-                  <% else %>
-                    <%= button_to node.name, character_action_path(character), params: { node_id: node.id }, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          <% else %>
-            <%= button_to location.name, character, params: { character: { location_id: location.id } }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="my-2 grid grid-cols-2 gap-2">
+    <%= render "map/map", character: character %>
+    <%= render "map/nodes", character: character %>
   </div>
   <%= render character.equipment %>
   <%= render character.inventory %>
