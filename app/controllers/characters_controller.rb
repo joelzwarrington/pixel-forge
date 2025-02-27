@@ -1,25 +1,26 @@
 class CharactersController < ApplicationController
-  before_action :set_character, only: %i[ show edit update destroy ]
+  skip_require_character! only: %i[ index choose ]
+  before_action :set_character, only: %i[ show edit choose update destroy ]
 
-  # GET /characters
   def index
     @characters = Character.all
   end
 
-  # GET /characters/1
   def show
   end
 
-  # GET /characters/new
   def new
     @character = Character.new
   end
 
-  # GET /characters/1/edit
   def edit
   end
 
-  # POST /characters
+  def choose
+    set_current_character @character.id
+    redirect_to root_url
+  end
+
   def create
     @character = Character.new(character_params)
 
@@ -30,7 +31,6 @@ class CharactersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /characters/1
   def update
     if @character.update(character_params)
       redirect_to @character, notice: "Character was successfully updated.", status: :see_other
@@ -39,20 +39,18 @@ class CharactersController < ApplicationController
     end
   end
 
-  # DELETE /characters/1
   def destroy
     @character.destroy!
     redirect_to characters_path, notice: "Character was successfully destroyed.", status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_character
-      @character = Character.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def character_params
-      params.expect(character: [ :name, :race_id, :location_id, :online ])
-    end
+  def set_character
+    @character = Character.find(params.expect(:id))
+  end
+
+  def character_params
+    params.expect(character: [ :name, :race_id, :location_id, :online ])
+  end
 end

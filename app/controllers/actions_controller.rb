@@ -11,7 +11,7 @@ class ActionsController < ApplicationController
     recipe = Recipe.find_by(id: params[:recipe_id])
 
     if (@action = ActionManager.begin(@character, node, recipe))
-      redirect_to [ @character, :action ], notice: "Action was successfully created."
+      redirect_to action_path, notice: "Action was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class ActionsController < ApplicationController
   private
 
   def set_character
-    @character = Character.find(params.expect(:character_id))
+    @character = current_character
   end
 
   def set_action

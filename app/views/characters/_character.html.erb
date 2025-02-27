@@ -1,7 +1,7 @@
 <%= turbo_frame_tag character do %>
   <div>
     <strong class="block font-medium mb-1">Name:</strong>
-    <%= character.name %>... online: <%= character.online? %> (<%= button_to "switch", character, params: { character: { online: !character.online? } }, form_class: "inline-block", class: "cursor-pointer italic text-gray-600 dark:text-blue-500 hover:underline" %>)
+    <%= character.name %>... online: <%= character.online? %> (<%= button_to "switch", character, params: { character: { online: !character.online? } }, form_class: "inline-block", class: "cursor-pointer italic text-gray-600 dark:text-blue-500 hover:underline" %>) <%= link_to "characters", characters_path, class: "cursor-pointer italic text-gray-600 dark:text-blue-500 hover:underline", data: { turbo_frame: "_top" } %>
   </div>
 
   <div class="my-2 grid grid-cols-2 gap-2">

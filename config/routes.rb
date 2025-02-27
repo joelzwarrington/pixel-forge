@@ -3,10 +3,15 @@ Rails.application.routes.draw do
 
   mount SolidQueueDashboard::Engine, at: "/solid-queue"
 
-  root "characters#index"
+  root "home#show"
+  get "home/show"
 
-  resources :characters, shallow: true do
-    resource :equipment
-    resource :action
+  resources :characters do
+    member do
+      post :choose
+    end
   end
+
+  resource :equipment
+  resource :action
 end

@@ -23,7 +23,7 @@ class EquipmentController < ApplicationController
   private
 
   def set_character
-    @character = Character.find(params.expect(:character_id))
+    @character = current_character
   end
 
   def set_equipment

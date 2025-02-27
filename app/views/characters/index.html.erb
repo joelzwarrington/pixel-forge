@@ -16,7 +16,7 @@
         <div class="flex min-w-0 gap-x-4">
           <div class="min-w-0 flex-auto">
             <p class="text-sm/6 font-semibold text-gray-900">
-              <%= link_to character do %>
+              <%= button_to [:choose, character], method: :post, class: "cursor-pointer" do %>
                 <span>
                 <span class="absolute inset-x-0 -top-px bottom-0"></span>
                 <%= character.name %>
