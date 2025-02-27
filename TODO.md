@@ -1,6 +1,5 @@
 nearest:
 
-- Items can only be equipped to specific slots
 - Add races for characters
 - Add system for crafting nodes w/ recipes
 

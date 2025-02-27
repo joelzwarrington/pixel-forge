@@ -1,7 +1,5 @@
 - id: wooden_sword
   name: Wooden Sword
-- id: copper_sword
-  name: Copper Sword
 - id: copper_ore
   name: Copper Ore
 - id: iron_ore
@@ -14,6 +12,9 @@
 # Copper
 - id: copper_sword
   name: Copper Sword
+  equipable_on:
+    main_hand: true
+
 - id: copper_dagger
   name: Copper Dagger
 - id: copper_longsword

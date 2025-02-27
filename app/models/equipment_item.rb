@@ -18,7 +18,7 @@ class EquipmentItem < ApplicationRecord
     off_hand
   ]
 
-  validates :item_id, uniqueness: { scope: [ :character, :slot ] }
+  validates :item_id, equipment_slot: true, uniqueness: { scope: [ :character, :slot ] }
   validates :slot, presence: true, uniqueness: { scope: :character }, inclusion: { in: SLOTS, message: "%{value} is not a valid slot" }
 
   def item
