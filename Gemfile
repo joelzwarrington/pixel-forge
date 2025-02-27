@@ -17,6 +17,10 @@ gem "solid_queue_dashboard"
 gem "solid_cable"
 gem "frozen_record"
 
+# must be kept in-sync with vendor/gems version until engine support https://github.com/rails/tailwindcss-rails/pull/484
+gem "atomic_view", "0.0.4"
+gem "view_component-form", github: "joelzwarrington/view_component-form", branch: "without-autoload"
+
 gem "tailwindcss-rails"
 gem "tailwind_merge"
 gem "heroicons"
