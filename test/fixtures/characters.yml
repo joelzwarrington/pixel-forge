@@ -1,3 +1,4 @@
 joel:
   name: joel
-  location: town
+  race_id: human
+  location_id: bloodfang_crags

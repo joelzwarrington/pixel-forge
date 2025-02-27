@@ -1,3 +1,7 @@
+nearer:
+
+- coins
+
 near:
 
 - redesign character screen and subscreens
@@ -6,7 +10,6 @@ near:
 
 longer:
 
-- add guilds
 - add pvp
 - Add chat per 'room'
   - rooms include global, guild and

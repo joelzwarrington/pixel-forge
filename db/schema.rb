@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_042511) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_27_060621) do
   create_table "actions", force: :cascade do |t|
     t.integer "character_id", null: false
     t.datetime "started_at"
@@ -53,6 +53,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_042511) do
     t.index ["item_id"], name: "index_equipment_items_on_item_id"
   end
 
+  create_table "guild_characters", force: :cascade do |t|
+    t.integer "guild_id", null: false
+    t.integer "character_id", null: false
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_guild_characters_on_character_id", unique: true
+    t.index ["guild_id"], name: "index_guild_characters_on_guild_id"
+  end
+
+  create_table "guilds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "inventory_items", force: :cascade do |t|
     t.integer "character_id", null: false
     t.string "item_id"
@@ -73,5 +89,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_042511) do
 
   add_foreign_key "actions", "characters"
   add_foreign_key "equipment_items", "characters"
+  add_foreign_key "guild_characters", "characters"
+  add_foreign_key "guild_characters", "guilds"
   add_foreign_key "inventory_items", "characters"
 end

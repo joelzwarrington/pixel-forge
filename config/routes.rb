@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :guilds
+  resources :guild_characters
+
   resource :equipment
   resource :action
 end
