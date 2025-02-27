@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_070356) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_27_075410) do
   create_table "actions", force: :cascade do |t|
     t.integer "character_id", null: false
     t.datetime "started_at"
@@ -37,8 +37,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_070356) do
     t.string "location_id"
     t.boolean "online", default: false
     t.string "race_id"
+    t.integer "user_id", null: false
     t.index ["location_id"], name: "index_characters_on_location_id"
     t.index ["name"], name: "index_characters_on_name", unique: true
+    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
   create_table "equipment_items", force: :cascade do |t|
@@ -114,6 +116,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_070356) do
   end
 
   add_foreign_key "actions", "characters"
+  add_foreign_key "characters", "users"
   add_foreign_key "equipment_items", "characters"
   add_foreign_key "guild_characters", "characters"
   add_foreign_key "guild_characters", "guilds"

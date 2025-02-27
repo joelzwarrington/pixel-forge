@@ -1,4 +1,5 @@
 class Character < ApplicationRecord
+  belongs_to :user, default: -> { Current.user }
   has_many :inventory_items, dependent: :destroy
   has_many :equipment_items, dependent: :destroy
   has_many :actions, dependent: :destroy
