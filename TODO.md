@@ -11,5 +11,3 @@ near:
 longer:
 
 - add pvp
-- Add chat per 'room'
-  - rooms include global, guild and
