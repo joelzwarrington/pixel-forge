@@ -16,4 +16,8 @@ class Node < FrozenRecord::Base
   end
 
   attribute :drops, Drop
+
+  def recipes
+    (attributes["recipes"] || []).map { |recipe_id| Recipe.find(recipe_id) }
+  end
 end

@@ -1,7 +1,5 @@
 - id: wooden_sword
   name: Wooden Sword
-- id: copper_ore
-  name: Copper Ore
 - id: iron_ore
   name: Iron Ore
 - id: stick
@@ -9,12 +7,19 @@
 - id: logs
   name: Logs
 
+# Ores
+- id: copper_ore
+  name: Copper Ore
+
+# Bars
+- id: copper_bar
+  name: Copper Bar
+
 # Copper
 - id: copper_sword
   name: Copper Sword
   equipable_on:
     main_hand: true
-
 - id: copper_dagger
   name: Copper Dagger
 - id: copper_longsword

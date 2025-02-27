@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_035439) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_27_042511) do
   create_table "actions", force: :cascade do |t|
     t.integer "character_id", null: false
     t.datetime "started_at"
@@ -23,9 +23,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_035439) do
     t.string "location_id"
     t.string "node_id"
     t.json "drops"
+    t.string "recipe_id"
     t.index ["character_id"], name: "index_actions_on_character_id"
     t.index ["location_id"], name: "index_actions_on_location_id"
     t.index ["node_id"], name: "index_actions_on_node_id"
+    t.index ["recipe_id"], name: "index_actions_on_recipe_id"
   end
 
   create_table "characters", force: :cascade do |t|

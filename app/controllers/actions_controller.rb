@@ -8,8 +8,9 @@ class ActionsController < ApplicationController
 
   def create
     node = Node.find(params.expect(:node_id))
+    recipe = Recipe.find_by(id: params[:recipe_id])
 
-    if (@action = ActionManager.begin(@character, node))
+    if (@action = ActionManager.begin(@character, node, recipe))
       redirect_to [ @character, :action ], notice: "Action was successfully created."
     else
       render :new, status: :unprocessable_entity

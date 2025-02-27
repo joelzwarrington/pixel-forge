@@ -1,0 +1,8 @@
+- id: smelt_copper
+  name: Smelt copper
+  items:
+    - id: copper_bar
+      quantity: 1
+  materials:
+    - id: copper_ore
+      quantity: 1

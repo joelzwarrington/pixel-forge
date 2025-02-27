@@ -10,3 +10,7 @@
     - item_id: copper_ore
       minimum_quantity: 1
       maximum_quantity: 1
+- id: smeltery
+  name: Smeltery
+  recipes:
+    - smelt_copper

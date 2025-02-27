@@ -1,7 +1,3 @@
-nearest:
-
-- Add system for crafting nodes w/ recipes
-
 near:
 
 - redesign character screen and subscreens

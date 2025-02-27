@@ -42,3 +42,5 @@
 # Capital
 - id: vaelthorn
   name: Vaelthorn
+  nodes:
+    - smeltery
