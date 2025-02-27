@@ -1,0 +1,9 @@
+- id: orc
+  name: Orc
+  starting_location_id: gor_kash
+- id: elf
+  name: Elf
+  starting_location_id: evendell
+- id: human
+  name: Human
+  starting_location_id: ravenhold

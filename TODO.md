@@ -1,6 +1,5 @@
 nearest:
 
-- Add races for characters
 - Add system for crafting nodes w/ recipes
 
 near:
