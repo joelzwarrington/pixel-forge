@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-  skip_require_character! only: %i[ index choose ]
+  skip_require_character! only: %i[ index new choose create ]
   before_action :set_character, only: %i[ show edit choose update destroy ]
 
   def index
