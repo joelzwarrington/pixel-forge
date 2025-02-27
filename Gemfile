@@ -10,11 +10,12 @@ gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
+gem "devise"
+
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_queue_dashboard"
 gem "solid_cable"
-
 gem "frozen_record"
 
 gem "bootsnap", require: false

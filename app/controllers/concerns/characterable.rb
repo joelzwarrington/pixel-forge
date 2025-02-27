@@ -27,6 +27,8 @@ module Characterable
     end
 
     def require_character?
+      return false if devise_controller?
+
       true
     end
   end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Characterable
+  include Authenticationable, Characterable
 
   allow_browser versions: :modern
 end
