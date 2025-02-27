@@ -7,7 +7,6 @@ gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "tailwindcss-rails"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "devise"
@@ -17,6 +16,10 @@ gem "solid_queue"
 gem "solid_queue_dashboard"
 gem "solid_cable"
 gem "frozen_record"
+
+gem "tailwindcss-rails"
+gem "tailwind_merge"
+gem "heroicons"
 
 gem "bootsnap", require: false
 gem "kamal", require: false

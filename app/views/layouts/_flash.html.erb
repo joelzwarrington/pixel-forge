@@ -1,0 +1,30 @@
+  <% flash.each do |type, message| %>
+    <% next if type == "timedout" || message.blank? %>
+    <div data-controller="flash"
+         data-transition-enter-active="transform ease-out duration-300 transition"
+         data-transition-enter-from="translate-y-2 opacity-0"
+         data-transition-enter-to="translate-y-0 opacity-100"
+         data-transition-leave-active="transition ease-in duration-100"
+         data-transition-leave-from="opacity-100"
+         data-transition-leave-to="opacity-0"
+         class="<%= class_names("pointer-events-auto overflow-hidden rounded-lg shadow-lg ring-1", "bg-red-700 ring-red-50": type == "alert", "bg-neutral-900 ring-neutral-300": type == "notice") %>">
+      <div class="px-4 py-2.5">
+        <div class="flex items-center">
+          <div class="shrink-0">
+            <% if type == "alert" %>
+              <%= icon "exclamation-circle", variant: :micro, options: { class: "text-white"} %>
+            <% end %>
+          </div>
+          <div class="ml-3 flex-1">
+            <p class="text-sm font-medium text-white"><%= message %></p>
+          </div>
+          <div class="ml-4 flex items-center shrink-0">
+            <button type="button" data-action="flash#dismiss" class="inline-flex items-center rounded-md bg-transparent text-gray-50 hover:text-white">
+              <span class="sr-only">Close</span>
+              <%= icon "x-mark", variant: :micro %>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>

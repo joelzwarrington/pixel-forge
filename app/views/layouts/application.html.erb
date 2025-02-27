@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html class="antialiased bg-zinc-900 dark:text-white scheme-dark">
   <head>
-    <title><%= content_for(:title) || "Pixel Forge" %></title>
+    <title>
+      <% if content_for?(:title) %>
+        <%= content_for(:title) %> | PixelForge
+      <% else %>
+      PixelForge
+      <% end %>
+    </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="turbo-cache-control" content="no-cache">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,9 +25,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-neutral-50">
-    <main class="container mx-auto mt-4 px-4">
-      <%= yield %>
-    </main>
+  <body>
+    <div aria-live="assertive" class="z-10 pointer-events-none fixed inset-0 flex items-end px-4 py-6">
+      <%= turbo_frame_tag :flashes, class: "flex w-full flex-col items-center space-y-4" do %>
+        <%= render "layouts/flash" %>
+      <% end %>
+    </div>
+
+    <% if content_for?(:content) %>
+      <%= yield :content %>
+    <% else %>
+      <main class="relative isolate min-h-svh w-full bg-zinc-950">
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>
