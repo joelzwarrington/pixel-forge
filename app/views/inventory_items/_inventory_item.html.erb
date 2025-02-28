@@ -1,0 +1,16 @@
+<% item = inventory_item.item %>
+<% quantity = inventory_item.quantity %>
+
+<%= turbo_frame_tag inventory_item do %>
+  <div data-controller="popover" data-popover-target="activator" class="bg-neutral-950 divide-y divide-neutral-600 border border-neutral-600 rounded-md shadow-xs select-none">
+    <template data-popover-target="template">
+      <%= item.name %>
+    </template>
+    <div class="w-full flex justify-center">
+      <%= image_tag(item.image_path, width: 64, height: 64, class: "pixelized") %>
+    </div>
+    <p class="text-center">
+      <%= number_to_human(quantity, format:'%n%u', units:{ thousand:'K', million:'M', billion:'B' }) %>
+    </p>
+  </div>
+<% end %>

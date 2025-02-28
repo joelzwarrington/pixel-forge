@@ -1,17 +1,10 @@
 <%= turbo_frame_tag :inventory do %>
-  <div class="divide-y divide-neutral-700 overflow-hidden rounded-lg bg-neutral-900 shadow">
-    <div class="px-4 py-5 sm:px-6">
-      <h2>Inventory</h2>
+  <div class="bg-neutral-900 border-y sm:border border-neutral-600 divide-y divide-neutral-600 overflow-hidden sm:rounded-md shadow-md">
+    <div class="p-4">
+      <h2 class="font-semibold">Inventory</h2>
     </div>
-    <div class="px-4 py-5 sm:p-6">
-      <ul class="list-disc list-inside">
-        <% inventory.items.each do |item, quantity| %>
-          <li>
-            <%# <%= image_tag(item.image_path, width: 32, height: 32) %>
-            <%= item.name %>, <%= quantity %>
-          </li>
-        <% end %>
-      </ul>
+    <div class="p-4 grid grid-cols-[repeat(auto-fill,minmax(64px,1fr))] gap-2">
+      <%= render inventory.items.all %>
     </div>
   </div>
 <% end %>

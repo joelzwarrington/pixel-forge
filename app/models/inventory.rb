@@ -6,9 +6,7 @@ class Inventory
   end
 
   def items
-    character.inventory_items.all.map do |inventory_item|
-      [ inventory_item.item, inventory_item.quantity ]
-    end
+    character.inventory_items
   end
 
   def add(items_to_add)
