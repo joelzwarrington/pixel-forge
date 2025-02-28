@@ -2,6 +2,8 @@ class CharactersController < ApplicationController
   skip_require_character! only: %i[ index new choose create ]
   before_action :set_character, only: %i[ show edit choose update destroy ]
 
+  respond_to :turbo_stream, only: :update
+
   def index
     @characters = Character.all
 
@@ -37,7 +39,9 @@ class CharactersController < ApplicationController
   def update
     @character.update(character_params)
 
-    respond_with @character
+    respond_with @character do |format|
+      format.turbo_stream { flash.now[:notice] = "Character updated" }
+    end
   end
 
   def destroy

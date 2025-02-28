@@ -1,46 +1,83 @@
 # Orcs
 - id: gor_kash
   name: Gor'Kash
+  race: orc
+  type: Fortress
 - id: krul_varr
   name: Krul'Varr
+  race: orc
+  type: Fortress
 - id: var_gol_sh
   name: Var'gol'sh
+  race: orc
+  type: Village
 - id: thrak_zor
   name: Thrak'zor
+  race: orc
+  type: Village
 - id: bloodfang_crags
   name: Bloodfang Crags
+  race: orc
+  type: Outskirts
   nodes:
     - copper_rock
 - id: gloomfang_wastes
   name: Gloomfang Wastes
+  race: orc
+  type: Outskirts
 # Elves
 - id: evendell
   name: Evendell
+  race: elf
+  type: Fortress
 - id: Vaelyndor
   name: Vaelyndor
+  race: elf
+  type: Fortress
 - id: ithilwens_hollow
   name: Ithilwen's Hollow
+  race: elf
+  type: Village
 - id: tir_anwen
   name: Tir'Anwen
+  race: elf
+  type: Village
 - id: eldertwine_woods
   name: Eldertwine Woods
+  race: elf
+  type: Outskirts
 - id: starbloom_river
   name: Starbloom River
+  race: elf
+  type: Outskirts
 # Humans
 - id: ravenhold
   name: Ravenhold
+  race: human
+  type: Fortress
 - id: harrowford
   name: Harrowford
+  race: human
+  type: Fortress
 - id: brighthollow
   name: Brighthollow
+  race: human
+  type: Village
 - id: thornbrook
   name: Thornbrook
+  race: human
+  type: Village
 - id: wildermarch
   name: Wildermarch
+  race: human
+  type: Outskirts
 - id: ironfang_ridge
   name: Ironfang Ridge
+  race: human
+  type: Outskirts
 # Capital
 - id: vaelthorn
   name: Vaelthorn
+  type: Capital
   nodes:
     - smeltery

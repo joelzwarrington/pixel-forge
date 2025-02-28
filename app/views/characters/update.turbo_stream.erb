@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend :flashes, partial: "layouts/flash" %>
+
+<%= turbo_stream.replace(@character) { render @character } %>
+<%= turbo_stream.replace(:map) { render("map/map", character: @character) } %>
