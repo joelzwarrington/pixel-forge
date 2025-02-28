@@ -16,6 +16,7 @@ gem "solid_queue"
 gem "solid_queue_dashboard"
 gem "solid_cable"
 gem "frozen_record"
+gem "responders"
 
 # must be kept in-sync with vendor/gems version until engine support https://github.com/rails/tailwindcss-rails/pull/484
 gem "atomic_view", "0.0.4"

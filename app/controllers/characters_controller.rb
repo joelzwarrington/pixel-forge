@@ -4,44 +4,46 @@ class CharactersController < ApplicationController
 
   def index
     @characters = Character.all
+
+    respond_with @characters
   end
 
   def show
+    respond_with @character
   end
 
   def new
     @character = Character.new
+
+    respond_with @character
   end
 
   def edit
+    respond_with @character
   end
 
   def choose
     set_current_character @character.id
-    redirect_to root_url
+    respond_with @character, location: -> { root_url }
   end
 
   def create
     @character = Character.new(character_params)
+    @character.save
 
-    if @character.save
-      redirect_to @character, notice: "Character was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
+    respond_with @character
   end
 
   def update
-    if @character.update(character_params)
-      redirect_to @character, notice: "Character was successfully updated.", status: :see_other
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @character.update(character_params)
+
+    respond_with @character
   end
 
   def destroy
-    @character.destroy!
-    redirect_to characters_path, notice: "Character was successfully destroyed.", status: :see_other
+    @character.destroy
+
+    respond_with @character
   end
 
   private

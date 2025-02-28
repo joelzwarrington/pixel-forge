@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Authenticationable, Characterable
+  include Authenticationable, Characterable, Respondable
 
   default_form_builder AtomicView::FormBuilder
 
