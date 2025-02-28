@@ -2,6 +2,6 @@
   <%= form.hidden_field :slot, value: slot %>
 
   <%= form.label :item_id %>
-  <%= form.collection_select :item_id, character.inventory.items.filter_map { |item, quantity| item if item.equipable_on?(slot) }, :id, :name, prompt: true %>
+  <%= form.collection_select :item_id, character.inventory.items.filter_map { |inventory_item| inventory_item.item if inventory_item.item.equipable_on?(slot) }, :id, :name, prompt: true %>
   <%= form.submit %>
 <% end %>
