@@ -1,9 +1,4 @@
-- id: wooden_sword
-  name: Wooden Sword
-- id: iron_ore
-  name: Iron Ore
-- id: stick
-  name: Stick
+# Logs
 - id: logs
   name: Logs
 
@@ -15,12 +10,37 @@
 - id: copper_bar
   name: Copper Bar
 
-# Copper
+# Equipment
 - id: copper_sword
   name: Copper Sword
   equipable_on:
     main_hand: true
-- id: copper_dagger
-  name: Copper Dagger
 - id: copper_longsword
   name: Copper Longsword
+  equipable_on:
+    main_hand: true
+- id: copper_dagger
+  name: Copper Dagger
+  equipable_on:
+    main_hand: true
+    off_hand: true
+- id: copper_helmet
+  name: Copper Helmet
+  equipable_on:
+    head: true
+- id: copper_chestplate
+  name: Copper Chestplate
+  equipable_on:
+    chest: true
+- id: copper_gloves
+  name: Copper Gloves
+  equipable_on:
+    hands: true
+- id: copper_leggings
+  name: Copper Leggings
+  equipable_on:
+    legs: true
+- id: copper_boots
+  name: Copper Boots
+  equipable_on:
+    feet: true
