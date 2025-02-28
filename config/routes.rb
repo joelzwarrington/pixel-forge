@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   resources :guild_characters
 
   resource :equipment
-  resource :action
+  resources :actions
 end

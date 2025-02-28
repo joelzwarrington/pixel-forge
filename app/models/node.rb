@@ -13,6 +13,12 @@ class Node < FrozenRecord::Base
       @minimum_quantity = data["minimum_quantity"]
       @maximum_quantity = data["maximum_quantity"]
     end
+
+    def quantity_for(seed)
+      bytes = Digest::SHA256.digest seed
+      seed_int = bytes.bytes.inject { |a, b| (a << 8) + b }
+      Random.new(seed_int).rand(minimum_quantity..maximum_quantity)
+    end
   end
 
   attribute :drops, Drop

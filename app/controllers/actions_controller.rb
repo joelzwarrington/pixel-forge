@@ -1,38 +1,52 @@
 class ActionsController < ApplicationController
-  before_action :set_character, only: %i[ show create destroy ]
-  before_action :set_action, only: %i[ show destroy ]
+  before_action :set_action, only: %i[ show edit update destroy ]
+
+  def index
+    @actions = Action.all
+
+    respond_with @actions
+  end
 
   def show
-    redirect_to @character if @action.nil?
+    respond_with @action
+  end
+
+  def new
+    @action = Action.new
+
+    respond_with @action
+  end
+
+  def edit
+    respond_with @action
   end
 
   def create
-    node = Node.find(params.expect(:node_id))
-    recipe = Recipe.find_by(id: params[:recipe_id])
+    @action = Action.new(action_params)
+    @action.save
 
-    if (@action = ActionManager.begin(@character, node, recipe))
-      redirect_to action_path, notice: "Action was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
+    respond_with @action
+  end
+
+  def update
+    @action.update(action_params)
+
+    respond_with @action
   end
 
   def destroy
-    ActionManager.end(@character)
-    redirect_to @character, notice: "Action was stopped.", status: :see_other
+    @action.stop!
+
+    respond_with @action
   end
 
   private
 
-  def set_character
-    @character = current_character
-  end
-
   def set_action
-    @action = ActionManager.active_for(@character)
+    @action = Action.find(params.expect(:id))
   end
 
   def action_params
-    params.expect(action: [ :node_id ])
+    params.expect(node_action: [ :location_id, :node_id, :recipe_id ])
   end
 end

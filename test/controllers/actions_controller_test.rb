@@ -2,7 +2,6 @@ require "test_helper"
 
 class ActionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    skip "todo"
     @action = actions(:one)
   end
 
@@ -18,7 +17,7 @@ class ActionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create action" do
     assert_difference("Action.count") do
-      post actions_url, params: { action: { character_id: @action.character_id, last_tick_at: @action.last_tick_at, location_node_id: @action.location_node_id, next_tick_at: @action.next_tick_at, seed: @action.seed, started_at: @action.started_at, stopped_at: @action.stopped_at } }
+      post actions_url, params: { action: {} }
     end
 
     assert_redirected_to action_url(Action.last)
@@ -35,7 +34,7 @@ class ActionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update action" do
-    patch action_url(@action), params: { action: { character_id: @action.character_id, last_tick_at: @action.last_tick_at, location_node_id: @action.location_node_id, next_tick_at: @action.next_tick_at, seed: @action.seed, started_at: @action.started_at, stopped_at: @action.stopped_at } }
+    patch action_url(@action), params: { action: {} }
     assert_redirected_to action_url(@action)
   end
 

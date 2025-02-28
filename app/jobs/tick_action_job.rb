@@ -2,6 +2,6 @@ class TickActionJob < ApplicationJob
   queue_as :default
 
   def perform(action)
-    ActionManager.tick action
+    action.tick
   end
 end

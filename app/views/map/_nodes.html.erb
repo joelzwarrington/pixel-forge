@@ -6,7 +6,7 @@
     </div>
     <div class="px-4 py-5 sm:p-6">
       <ul class="pl-4 list-disc list-inside">
-        <% action = ActionManager.active_for(character) %>
+        <% action = character.actions.active.first %>
         <% location.nodes.each do |node| %>
           <li>
             <% if action&.location == location && action&.node == node %>
@@ -16,12 +16,12 @@
               <ul class="pl-4 list-disc list-inside">
                 <% node.recipes.each do |recipe| %>
                   <li>
-                    <%= button_to recipe.name, action_path, params: { node_id: node.id, recipe_id: recipe.id }, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+                    <%= button_to recipe.name, actions_path, params: { node_action: { location_id: location.id, node_id: node.id, recipe_id: recipe.id }}, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
                   </li>
                 <% end %>
               </ul>
             <% else %>
-              <%= button_to node.name, action_path, params: { node_id: node.id }, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+              <%= button_to node.name, actions_path, params: { node_action: { location_id: location.id, node_id: node.id }}, data: { turbo: false }, form_class: "inline-block", class: "cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
             <% end %>
           </li>
         <% end %>
