@@ -1,0 +1,16 @@
+<div class="p-4 grid grid-cols-[repeat(auto-fill,minmax(128px,1fr))] gap-2">
+  <% @items.each do |item|%>
+    <div class="bg-neutral-950 divide-y divide-neutral-600 border border-neutral-600 rounded-md shadow-xs select-none">
+      <div class="w-full flex justify-center">
+        <% if Rails.application.assets.load_path.find(item.image_path).present? %>
+          <%= image_tag(item.image_path, width: 64, height: 64, class: "pixelized") %>
+        <% else %>
+          Image not found.
+        <% end %>
+      </div>
+      <p class="text-center">
+        <%= item.name %>
+      </p>
+    </div>
+  <% end %>
+</div>

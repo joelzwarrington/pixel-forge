@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "items", to: "items#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
   mount SolidQueueDashboard::Engine, at: "/solid-queue"
