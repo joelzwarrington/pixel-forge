@@ -12,12 +12,12 @@ class EquipmentController < ApplicationController
   def create
     item = Item.find(params.expect(:item_id))
     @equipment.equip(params.expect(:slot), item)
-    redirect_to [ @character, :equipment ], notice: "Item equipped.", status: :see_other
+    redirect_to @character, notice: "Item equipped.", status: :see_other
   end
 
   def destroy
     @equipment.unequip(params.expect(:slot))
-    redirect_to [ @character, :equipment ], notice: "Item unequipped.", status: :see_other
+    redirect_to @character, notice: "Item unequipped.", status: :see_other
   end
 
   private
