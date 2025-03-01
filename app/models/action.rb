@@ -46,7 +46,7 @@ class Action < ApplicationRecord
         self.last_tick_at = (last_tick_at || started_at).advance(seconds: seconds_per_tick)
 
         if recipe?
-          stop!(time) unless character.inventory.remove(recipe.materials)
+          stop! unless character.inventory.remove(recipe.materials)
           recipe.items.each { |item, quantity| attributes["drops"][item.id] += quantity }
         else
           node.drops.each { |drop| attributes["drops"][drop.item.id] += drop.quantity_for("#{seed}-#{last_tick_at.iso8601}") }
