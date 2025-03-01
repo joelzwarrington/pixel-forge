@@ -1,13 +1,6 @@
-nearer:
-
-- coins
-
-near:
-
-- redesign character screen and subscreens
-- Add authentication with devise
-- Add authorization with action_policy
-
-longer:
-
-- add pvp
+- Add coins to characters
+- Add authorization
+- Add professions/skills and XP
+- Add PvP/combat
+- Optimize action ticks (and improve performance when doing bulk)
+  - recipes are quite bad for performance, large stacks, can likely try to do one calculation by removing # of ticks \* recipe materials before, then depending on number of possible ticks calculate randomness if needed
