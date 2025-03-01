@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get "map", to: "map#show"
 
+  resources :locations
   resources :guilds
   resources :guild_characters
 

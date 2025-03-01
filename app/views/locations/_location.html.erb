@@ -1,0 +1,18 @@
+<li id="<%= dom_id(location) %>" class="relative flex justify-between gap-x-6 px-4 py-3.5 hover:bg-neutral-800">
+  <div class="flex min-w-0 gap-x-4">
+    <div class="min-w-0 flex-auto">
+        <%= link_to location do %>
+          <span class="absolute inset-x-0 -top-px bottom-0"></span>
+          <span class="text-sm/6 font-semibold">
+            <%= location.name %>
+          </span>
+        <% end %>
+      <p class="mt flex text-xs/5 text-neutral-200">
+        <%= location.type %>
+      </p>
+    </div>
+  </div>
+  <div class="flex shrink-0 items-center gap-x-4">
+    <%= icon "chevron-right", options: { class: "size-4 text-neutral-400" } %>
+  </div>
+</li>
