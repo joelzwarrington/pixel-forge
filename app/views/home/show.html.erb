@@ -1,4 +1,12 @@
-<%= render current_user %>
-<%= button_to "Logout", destroy_user_session_path, method: :delete, form_class: "inline-flex", class: "cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline" %>
+<div class="my-4 md:m-4">
+  <%= render "map/map", character: current_character %>
+</div>
+
+<div class="m-4 grid grid-cols-2 gap-2">
+  <%= render current_character.location %>
+  <%= turbo_frame_tag :node do %>
+  
+  <% end %>
+</div>
 
 <%= render current_character %>

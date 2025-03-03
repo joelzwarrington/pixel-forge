@@ -37,6 +37,9 @@
       <%= yield :content %>
     <% else %>
       <main class="relative isolate min-h-svh w-full bg-zinc-950">
+        <%= render current_user %>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, form_class: "inline-flex", class: "cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline" %>
+
         <%= yield %>
       </main>
     <% end %>

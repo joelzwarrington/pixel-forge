@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :nodes
   get "items", to: "items#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
 
   get "map", to: "map#show"
 
-  resources :locations
+  resources :locations, only: [ :index, :show ] do
+    resources :nodes, only: [ :index, :show ]
+  end
   resources :guilds
   resources :guild_characters
 

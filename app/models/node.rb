@@ -1,4 +1,6 @@
 class Node < FrozenRecord::Base
+  include ActiveModel::Conversion
+
   class Drop
     def self.load(data)
       data.map do |drop|

@@ -1,18 +1,28 @@
-<li id="<%= dom_id(location) %>" class="relative flex justify-between gap-x-6 px-4 py-3.5 hover:bg-neutral-800">
-  <div class="flex min-w-0 gap-x-4">
-    <div class="min-w-0 flex-auto">
-        <%= link_to location do %>
-          <span class="absolute inset-x-0 -top-px bottom-0"></span>
-          <span class="text-sm/6 font-semibold">
-            <%= location.name %>
-          </span>
+<%= turbo_frame_tag :location do %>
+  <%= turbo_frame_tag location do %>
+    <div class="bg-neutral-900 border-y sm:border border-neutral-600 divide-y divide-neutral-600 overflow-hidden sm:rounded-md shadow-md">
+      <div class="p-4 flex gap-2 items-center">
+        <%= image_tag("icons/map.png", height: 32, width: 32, class: "pixelized") %>
+        <h2 class="font-bold"><%= location.name %></h2>
+      </div>
+
+      <section class="w-full relative flex justify-between gap-x-6 px-4 py-3.5 hover:bg-neutral-800">
+        <% location.nodes.each do |node| %>
+          <div class="flex min-w-0 gap-x-4">
+            <div class="min-w-0 flex-auto">
+              <%= link_to [ location, node ], data: { turbo_frame: "node" } do %>
+                <span class="absolute inset-x-0 -top-px bottom-0"></span>
+                <span class="text-sm/6 font-semibold">
+                  <%= node.name %>
+                </span>
+              <% end %>
+              <p class="mt flex text-xs/5 text-neutral-200">
+                <%= node.id %>
+              </p>
+            </div>
+          </div>
         <% end %>
-      <p class="mt flex text-xs/5 text-neutral-200">
-        <%= location.type %>
-      </p>
+      </section>
     </div>
-  </div>
-  <div class="flex shrink-0 items-center gap-x-4">
-    <%= icon "chevron-right", options: { class: "size-4 text-neutral-400" } %>
-  </div>
-</li>
+  <% end %>
+<% end %>
