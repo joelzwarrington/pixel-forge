@@ -3,24 +3,4 @@
     <strong class="block font-medium mb-1">Name:</strong>
     <%= character.name %>... online: <%= character.online? %> (<%= button_to "switch", character, params: { character: { online: !character.online? } }, form_class: "inline-block", class: "cursor-pointer italic text-gray-600 dark:text-blue-500 hover:underline" %>) <%= link_to "characters", characters_path, class: "cursor-pointer italic text-gray-600 dark:text-blue-500 hover:underline", data: { turbo_frame: "_top" } %>
   </div>
-
-  <div class="my-2 grid grid-cols-2 gap-2">
-    <div class="flex flex-col gap-2">
-      <%= render "map/nodes", character: character %>
-      <% action = character.actions.active.first %>
-      <%= turbo_frame_tag :action do %>
-        <% if action.present? %>
-          <%= turbo_stream_from action %>
-          <%= render action %>
-          <%= button_to "Stop action", action, method: :delete, data: { turbo: false }, class: "mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer" %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <div class="sm:mx-2 my-4">
-    <%= render character.equipment %>
-  </div>
-  <div class="sm:mx-2 my-4">
-    <%= render character.inventory %>
-  </div>
 <% end %>
