@@ -1,4 +1,4 @@
-<%= turbo_frame_tag :map do %>
+  <%= turbo_frame_tag :map, data: { autoscroll_block: "start", autoscroll_behaviour: "smooth" }, class: "divide-y divide-neutral-600" do %>
   <div class="bg-neutral-900 border-y sm:border border-neutral-600 divide-y divide-neutral-600 overflow-hidden sm:rounded-md shadow-md">
     <div class="p-4 flex gap-2 items-center">
       <%= image_tag("icons/map.png", height: 32, width: 32, class: "pixelized") %>
@@ -20,9 +20,9 @@
         </div>
       </div>
     </section>
-    <div class="grid grid-cols-3 grow divide-x divide-neutral-600">
+    <div class="grid md:grid-cols-3 grow divide-x divide-neutral-600">
       <section class="divide-y divide-neutral-600">
-        <div class="py-3.5 px-4">
+        <div class="py-3.5 px-4 bg-neutral-950">
           <h2 class="font-semibold">Thul'Kaar</h2>
           <p class="text-sm text-neutral-100">Orc fortresses, villages and outskirts</p>
         </div>
@@ -47,8 +47,8 @@
           <% end %>
         </ul>
       </section>
-      <section class="divide-y divide-neutral-600">
-        <div class="py-3.5 px-4">
+      <section class="border-t md:border-t-0 border-neutral-600 divide-y divide-neutral-600">
+        <div class="py-3.5 px-4 bg-neutral-950">
           <h2 class="font-semibold">Syl'Anora</h2>
           <p class="text-sm text-neutral-100">Elf fortresses, villages and outskirts</p>
         </div>
@@ -73,8 +73,8 @@
           <% end %>
         </ul>
       </section>
-      <section class="divide-y divide-neutral-600">
-        <div class="py-3.5 px-4">
+      <section class="border-t md:border-t-0 border-neutral-600 divide-y divide-neutral-600">
+        <div class="py-3.5 px-4 bg-neutral-950">
           <h2 class="font-semibold">Aldorwyn</h2>
           <p class="text-sm text-neutral-100">Human fortresses, villages and outskirts</p>
         </div>

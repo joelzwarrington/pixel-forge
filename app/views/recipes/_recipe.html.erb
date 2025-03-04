@@ -1,0 +1,52 @@
+<section class="divide-y divide-neutral-700">
+  <div class="divide-y divide-neutral-600">
+    <div class="py-3.5 px-4 bg-neutral-950">
+      <h2 class="font-semibold">Items</h2>
+      <p class="text-sm text-neutral-100">The crafted items.</p>
+    </div>
+    <ul role="list" class="divide-y divide-neutral-800 overflow-hidden bg-neutral-900 shadow-sm ring-1 ring-neutral-900/5">
+      <% recipe.items.each do |item, quantity| %>
+        <li class="relative flex justify-between gap-x-6 px-4 py-3.5 hover:bg-neutral-800">
+          <div class="flex min-w-0 gap-x-4">
+            <div class="min-w-0 flex-auto">
+              <p class="text-sm/6 font-semibold">
+                <%= item.name %>
+              </p>
+              <p class="mt flex text-xs/5 text-neutral-200">
+                <%= quantity %>
+              </p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="divide-y divide-neutral-600">
+    <div class="py-3.5 px-4 bg-neutral-950">
+      <h2 class="font-semibold">Materials</h2>
+      <p class="text-sm text-neutral-100">The required items.</p>
+    </div>
+    <ul role="list" class="divide-y divide-neutral-800 overflow-hidden bg-neutral-900 shadow-sm ring-1 ring-neutral-900/5">
+      <% recipe.materials.each do |item, quantity| %>
+        <li class="relative flex justify-between gap-x-6 px-4 py-3.5 hover:bg-neutral-800">
+          <div class="flex min-w-0 gap-x-4">
+            <div class="min-w-0 flex-auto">
+              <p class="text-sm/6 font-semibold">
+                <%= item.name %>
+              </p>
+              <p class="mt flex text-xs/5 text-neutral-200">
+                <%= quantity %>
+              </p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= form_with(model: Action.new, scope: "node_action") do |form| %>
+    <%= form.hidden_field :location_id, value: location.id %>
+    <%= form.hidden_field :node_id, value: node.id %>
+    <%= form.hidden_field :recipe_id, value: recipe.id %>
+    <%= form.submit "Start action" %>
+  <% end %>
+</section>

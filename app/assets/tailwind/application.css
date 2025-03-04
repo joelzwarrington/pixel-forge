@@ -5,6 +5,22 @@
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/typography";
 
+@layer base {
+  turbo-frame {
+    display: block;
+  }
+
+  /* Opt out of cursor:default changes in V4: https://github.com/tailwindlabs/tailwindcss/issues/8961 */
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+  button:disabled,
+  [role="button"]:disabled {
+    cursor: default;
+  }
+}
+
 @utility pixelized {
   image-rendering: pixelated;
 }

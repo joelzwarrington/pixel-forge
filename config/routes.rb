@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :nodes
-  get "items", to: "items#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
   mount SolidQueueDashboard::Engine, at: "/solid-queue"
@@ -14,13 +12,17 @@ Rails.application.routes.draw do
     end
   end
 
+  get "items", to: "items#index"
+
   root "home#show"
 
   get "map", to: "map#show"
-
-  resources :locations, only: [ :index, :show ] do
-    resources :nodes, only: [ :index, :show ]
+  resources :locations, only: :show do
+    resources :nodes, only: :show do
+      resources :recipes, only: :show
+    end
   end
+
   resources :guilds
   resources :guild_characters
 

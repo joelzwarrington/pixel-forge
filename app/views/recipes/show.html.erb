@@ -1,4 +1,4 @@
-<% content_for :title, @location.name %>
+<% content_for :title, @recipe.name %>
 
 <%= turbo_frame_tag :map, autoscroll: true, data: { autoscroll_block: "start", autoscroll_behaviour: "smooth" } do %>
   <div class="bg-neutral-900 border-y sm:border border-neutral-600 divide-y divide-neutral-600 overflow-hidden sm:rounded-md shadow-md">
@@ -7,8 +7,8 @@
         <%= icon "arrow-long-left", variant: :micro, options: { class: "size-4"} %>
         Back
       <% end %>
-      <h2 class="font-bold"><%= @location.name %></h2>
+      <h2 class="font-bold"><%= @recipe.name %></h2>
     </div>
-    <%= render @location %>
+    <%= render @recipe, location: @location, node: @node %>
   </div>
 <% end %>
