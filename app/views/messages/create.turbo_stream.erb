@@ -1,0 +1,2 @@
+<%= turbo_stream.append(:messages) { render @message } %>
+<%= turbo_stream.update(:chatbox) { render "messages/form", message: Message.new } %>

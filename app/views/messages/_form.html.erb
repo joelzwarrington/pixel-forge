@@ -1,0 +1,7 @@
+<%= form_with model: message, class: "w-full"  do |form| %>
+  <%= form.label :body, class: "sr-only" %>
+  <div class="w-full flex flex-col bg-white/5">
+    <%= form.text_area :body, rows: 1, class: "w-full resize-none border-none bg-transparent border-none focus:ring-0" %>
+    <%= form.submit class: "mr-2 mb-2 inline-flex items-center self-end rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600" %>
+  </div>
+<% end %>

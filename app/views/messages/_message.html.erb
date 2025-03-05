@@ -1,0 +1,4 @@
+<article id="<%= dom_id(message) %>" class="w-full flex-none">
+  <address class="inline not-italic">[<%= link_to message.character.name, message.character, class: "text-indigo-600 hover:text-indigo-500" %>]</address>
+  <p class="inline"><%= message.body %></p>
+</article>

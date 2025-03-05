@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages, only: :create
+
   resources :guilds
   resources :guild_characters
 

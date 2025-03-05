@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_075410) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_05_032008) do
   create_table "actions", force: :cascade do |t|
     t.integer "character_id", null: false
     t.datetime "started_at"
@@ -83,6 +83,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_075410) do
     t.index ["item_id"], name: "index_inventory_items_on_item_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.string "location_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_messages_on_character_id"
+    t.index ["location_id"], name: "index_messages_on_location_id"
+  end
+
   create_table "nodes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -121,4 +131,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_075410) do
   add_foreign_key "guild_characters", "characters"
   add_foreign_key "guild_characters", "guilds"
   add_foreign_key "inventory_items", "characters"
+  add_foreign_key "messages", "characters"
 end

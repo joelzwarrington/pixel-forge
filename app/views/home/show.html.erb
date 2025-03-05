@@ -2,7 +2,23 @@
   <%= render "map/map" %>
 </div>
 
-<div class="my-8 md:m-4">
+<div class="my-8 md:m-4 grid md:grid-cols-2 gap-2">
+  <%= turbo_frame_tag :chat do %>
+    <% if @location.present? %>
+      <%= turbo_stream_from [ @location, :messages ] %>
+      <div class="bg-neutral-900 border-y sm:border border-neutral-600 divide-y divide-neutral-600 overflow-hidden sm:rounded-md shadow-md">
+        <div class="p-4 flex gap-2 items-center">
+          <%= image_tag("icons/map.png", height: 32, width: 32, class: "pixelized") %>
+          <h2 class="font-bold">Chat</h2>
+        </div>
+        <div class="h-64 overflow-scroll flex flex-col-reverse"><section id="messages" class="pb-4 px-4 flex flex-col justify-end"></section></div>
+        <section>
+          <%= turbo_frame_tag(:chatbox) { render "messages/form", message: Message.new } %>
+        </section>
+      </div>
+    <% else %>
+    <% end %>
+  <% end %>
   <%= turbo_frame_tag :action do %>
     <% if @action %>
       <%= turbo_stream_from @action %>
