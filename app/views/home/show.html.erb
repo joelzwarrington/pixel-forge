@@ -23,6 +23,9 @@
     <% if @action %>
       <%= turbo_stream_from @action %>
       <%= render @action %>
+      <% if @action.active? %>
+        <%= button_to "Stop action", @action, method: :delete, form_class: "p-4 w-full", class: "w-full mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer" %>
+      <% end %>
     <% else %>
       <%= render "actions/empty_action" %>
     <% end %>
