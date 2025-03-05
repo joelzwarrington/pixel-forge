@@ -1,7 +1,7 @@
 class ActionsController < ApplicationController
   before_action :set_action, only: %i[ show edit update destroy ]
 
-  respond_to :turbo_stream, only: :create
+  respond_to :turbo_stream, only: %i[ create destroy ]
 
   def index
     @actions = Action.all
@@ -27,8 +27,7 @@ class ActionsController < ApplicationController
     @action = Action.new(action_params)
     @action.save
 
-    redirect_to @action.character, notice: "Action started"
-    # respond_with @action
+    respond_with @action
   end
 
   def update
@@ -40,8 +39,7 @@ class ActionsController < ApplicationController
   def destroy
     @action.stop!
 
-    redirect_to @action.character, notice: "Action stopped"
-    # respond_with @action
+    respond_with @action
   end
 
   private

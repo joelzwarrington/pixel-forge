@@ -1,2 +1,5 @@
-<%= turbo_stream.replace :nodes { render "map/nodes", character: @action.character } %>
-<%= turbo_stream.replace :action { render @action } %>
+<%= turbo_stream.replace(:map) { render "map/map" }%>
+<%= turbo_stream.update :action do %>
+  <%= turbo_stream_from @action %>
+  <%= render @action %>
+<% end %>

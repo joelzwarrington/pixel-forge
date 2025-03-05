@@ -2,6 +2,17 @@
   <%= render "map/map" %>
 </div>
 
+<div class="my-8 md:m-4">
+  <%= turbo_frame_tag :action do %>
+    <% if @action %>
+      <%= turbo_stream_from @action %>
+      <%= render @action %>
+    <% else %>
+      <%= render "actions/empty_action" %>
+    <% end %>
+  <% end %>
+</div>
+
 <div class="my-4 md:m-4 grid md:grid-cols-2 gap-2">
   <%= render @equipment %>
   <%= render @inventory %>

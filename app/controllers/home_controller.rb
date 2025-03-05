@@ -4,6 +4,6 @@ class HomeController < ApplicationController
     @equipment = @character.equipment
     @inventory = @character.inventory
     @location = @character.location
-    @node = @character.actions.active.first&.node
+    @action = @character.actions.active.first
   end
 end

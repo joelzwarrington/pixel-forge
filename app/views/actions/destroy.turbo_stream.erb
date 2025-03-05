@@ -1,0 +1,6 @@
+<%= turbo_stream.replace(:map) { render "map/map" }%>
+<%= turbo_stream.update :action do %>
+  <%= render "actions/empty_action" %>
+<% end %>
+<%= turbo_stream.replace(:equipment) { render current_character.equipment }%>
+<%= turbo_stream.replace(:inventory) { render current_character.inventory }%>
