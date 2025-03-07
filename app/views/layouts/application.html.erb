@@ -32,6 +32,7 @@
         <%= render "layouts/flash" %>
       <% end %>
     </div>
+    <%= turbo_frame_tag :modal %>
 
     <% if content_for?(:content) %>
       <%= yield :content %>

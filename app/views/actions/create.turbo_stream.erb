@@ -1,4 +1,4 @@
-<%= turbo_stream.replace(:map) { render "map/map" }%>
+<%= turbo_stream.replace(:modal) { turbo_frame_tag :modal }%>
 <%= turbo_stream.update :action do %>
   <%= turbo_stream_from @action %>
   <%= render @action %>
