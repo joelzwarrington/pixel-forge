@@ -1,4 +1,4 @@
-<%= turbo_stream.replace(:map) { render "map/map" }%>
+<%= turbo_stream.prepend :flashes, partial: "layouts/flash" %>
 <%= turbo_stream.update :action do %>
   <%= render "actions/empty_action" %>
 <% end %>

@@ -27,7 +27,9 @@ class ActionsController < ApplicationController
     @action = Action.new(action_params)
     @action.save
 
-    respond_with @action
+    respond_with(@action) do |format|
+      format.turbo_stream { flash.now[:notice] = "Action started" }
+    end
   end
 
   def update
@@ -39,7 +41,9 @@ class ActionsController < ApplicationController
   def destroy
     @action.stop!
 
-    respond_with @action
+    respond_with(@action) do |format|
+      format.turbo_stream { flash.now[:notice] = "Action stopped" }
+    end
   end
 
   private

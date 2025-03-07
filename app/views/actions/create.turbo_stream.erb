@@ -1,3 +1,4 @@
+<%= turbo_stream.prepend :flashes, partial: "layouts/flash" %>
 <%= turbo_stream.replace(:modal) { turbo_frame_tag :modal }%>
 <%= turbo_stream.update :action do %>
   <%= turbo_stream_from @action %>
