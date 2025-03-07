@@ -1,6 +1,8 @@
 class Inventory
   attr_reader :character
 
+  delegate :coins, to: :character
+
   def initialize(character)
     @character = character
   end

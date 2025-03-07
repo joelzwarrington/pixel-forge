@@ -1,4 +1,3 @@
-- Add coins to characters
 - Add authorization
 - Add professions/skills and XP
 - Add PvP/combat
