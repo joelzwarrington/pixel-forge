@@ -10,8 +10,9 @@
           <% item = Item.find("copper_sword") %>
           <% slot = "head" %>
           <% ["head", "neck", "shoulders", "back", "chest", "wrist"].map do |slot| %>
-            <%= link_to new_equipment_path(slot: slot), data: { turbo: false, controller: "popover", popover_target: "activator" }, class: "block bg-neutral-950 divide-y divide-neutral-600 border border-neutral-600 rounded-md shadow-xs select-none size-16" do %>
-              <% if (item = equipped_items[slot])%>
+            <% item = equipped_items[slot] %>
+            <%= link_to new_equipment_path(slot: slot), data: { turbo: false, controller: item.present? ? "popover" : nil, popover_target: "activator" }.compact, class: "block bg-neutral-950 divide-y divide-neutral-600 border border-neutral-600 rounded-md shadow-xs select-none size-16" do %>
+              <% if item %>
                 <template data-popover-target="template">
                   <%= item.name %>
                 </template>
@@ -27,8 +28,9 @@
         </div>
         <div class="flex flex-col gap-2">
           <% ["hands", "waist", "legs", "feet", "finger_one", "finger_two"].map do |slot| %>
-            <%= link_to new_equipment_path(slot: slot), data: { turbo: false, controller: "popover", popover_target: "activator" }, class: "block bg-neutral-950 divide-y divide-neutral-600 border border-neutral-600 rounded-md shadow-xs select-none size-16" do %>
-              <% if (item = equipped_items[slot])%>
+            <% item = equipped_items[slot] %>
+            <%= link_to new_equipment_path(slot: slot), data: { turbo: false, controller: item.present? ? "popover" : nil, popover_target: "activator" }.compact, class: "block bg-neutral-950 divide-y divide-neutral-600 border border-neutral-600 rounded-md shadow-xs select-none size-16" do %>
+              <% if item %>
                 <template data-popover-target="template">
                   <%= item.name %>
                 </template>
